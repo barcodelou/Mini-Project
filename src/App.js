@@ -1,24 +1,53 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { gql, useQuery, useMutation, useSubscription } from "@apollo/client";
+import { Navbar, CheckOut,Login,SignUp ,Footer,Eror} from "./component";
+import Product from "./component/Product/Product";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Check from './component/checkout/Checkout'
+
+const AllGet = gql`
+  query MyQuery {
+    itemlist {
+      title
+      price
+      img
+      id
+      descript
+    }
+  }
+`;
 
 function App() {
+  const { data } = useQuery(AllGet);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Product data={data} />
+            <Footer/>
+          </Route>
+          <Route exact path="/checkout">
+            <CheckOut />
+          </Route>
+          <Route exact path="/login">
+            <Login />
+          </Route>
+          <Route exact path="/signup">
+            <SignUp />
+          </Route>
+          <Route exact path="/cek">
+            <Check />
+          </Route>
+          <Route exact path="*">
+            <Eror />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

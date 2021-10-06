@@ -1,0 +1,8 @@
+export{default as Navbar} from './Navbar/navbar'
+export{default as Product} from './Product/Product'
+export{default as CheckOut} from './Cart/Cart'
+export{default as Login} from './Login/login'
+export{default as SignUp} from './form/index'
+export{default as Footer} from './Footer/Footer'
+export{default as Header} from './Header/Header'
+export{default as Avatar} from './Avatar/avatar'
