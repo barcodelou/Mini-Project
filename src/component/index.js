@@ -6,3 +6,5 @@ export{default as SignUp} from './form/index'
 export{default as Footer} from './Footer/Footer'
 export{default as Header} from './Header/Header'
 export{default as Avatar} from './Avatar/avatar'
+export{default as Eror} from './eror/eror'
+
